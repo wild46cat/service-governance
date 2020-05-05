@@ -1,5 +1,7 @@
-package com.archer.servgovernspringgrpc.governance;
+package com.archer.service_governance.beans;
 
+import com.archer.service_governance.enums.EnvEnum;
+import com.archer.service_governance.enums.ProtocolEnum;
 import lombok.Builder;
 import lombok.Data;
 

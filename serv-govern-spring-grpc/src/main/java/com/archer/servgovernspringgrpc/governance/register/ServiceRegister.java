@@ -1,6 +1,8 @@
-package com.archer.servgovernspringgrpc.governance;
+package com.archer.servgovernspringgrpc.governance.register;
 
 import com.alibaba.fastjson.JSON;
+import com.archer.servgovernspringgrpc.governance.beans.ServiceCenterValue;
+import com.archer.servgovernspringgrpc.governance.beans.ServiceEntity;
 import io.etcd.jetcd.ByteSequence;
 import io.etcd.jetcd.Client;
 import io.etcd.jetcd.KV;

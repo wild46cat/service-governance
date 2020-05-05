@@ -1,4 +1,4 @@
-package com.archer.servgovernspringgrpc.governance;
+package com.archer.servgovernspringgrpc.governance.register;
 
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;

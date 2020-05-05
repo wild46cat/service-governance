@@ -1,4 +1,4 @@
-package com.archer.service_governance;
+package com.archer.service_governance.enums;
 
 public enum ProtocolEnum {
     HTTP("http"), HTTPS("https"), gRPC("grpc");

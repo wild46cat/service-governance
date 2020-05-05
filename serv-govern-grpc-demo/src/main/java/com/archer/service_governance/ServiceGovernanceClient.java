@@ -1,5 +1,7 @@
 package com.archer.service_governance;
 
+import com.archer.service_governance.beans.ServiceEntity;
+import com.archer.service_governance.register.ServiceRegister;
 import io.etcd.jetcd.Client;
 import org.apache.commons.lang3.StringUtils;
 
@@ -37,12 +39,6 @@ public class ServiceGovernanceClient {
             ServiceRegister serviceRegister = new ServiceRegister(client, entity);
             this.serviceRegisterList.add(serviceRegister);
         }
-        this.start();
-        Runtime.getRuntime().addShutdownHook(new Thread(
-                () -> {
-                    shutdown();
-                })
-        );
     }
 
     public Client getClient() {
@@ -52,10 +48,15 @@ public class ServiceGovernanceClient {
     /**
      * 程序启动,注册服务
      */
-    private void start() {
+    public void start() {
         for (ServiceRegister register : serviceRegisterList) {
             register.register();
         }
+        Runtime.getRuntime().addShutdownHook(new Thread(
+                () -> {
+                    shutdown();
+                })
+        );
     }
 
     /**

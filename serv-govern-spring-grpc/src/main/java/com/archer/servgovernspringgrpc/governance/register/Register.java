@@ -1,4 +1,4 @@
-package com.archer.servgovernspringgrpc.governance;
+package com.archer.servgovernspringgrpc.governance.register;
 
 public interface Register {
     /**

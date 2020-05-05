@@ -1,5 +1,7 @@
-package com.archer.servgovernspringgrpc.governance;
+package com.archer.servgovernspringgrpc.governance.resolver;
 
+import com.archer.servgovernspringgrpc.governance.resolver.DefaultNameResolver;
+import com.archer.servgovernspringgrpc.governance.resolver.EtcdNameResolver;
 import io.etcd.jetcd.Client;
 import io.grpc.EquivalentAddressGroup;
 import io.grpc.NameResolver;

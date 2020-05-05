@@ -1,6 +1,8 @@
-package com.archer.servgovernspringgrpc.governance;
+package com.archer.servgovernspringgrpc.governance.resolver;
 
 import com.alibaba.fastjson.JSONObject;
+import com.archer.servgovernspringgrpc.governance.beans.ServiceCenterValue;
+import com.archer.servgovernspringgrpc.governance.enums.ProtocolEnum;
 import io.etcd.jetcd.*;
 import io.etcd.jetcd.kv.GetResponse;
 import io.etcd.jetcd.options.GetOption;
@@ -22,8 +24,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static com.archer.servgovernspringgrpc.governance.ServiceRegister.serviceRegisterPrefix;
-import static com.archer.servgovernspringgrpc.governance.ServiceRegister.spliter;
+import static com.archer.servgovernspringgrpc.governance.register.ServiceRegister.serviceRegisterPrefix;
+import static com.archer.servgovernspringgrpc.governance.register.ServiceRegister.spliter;
 
 
 public class EtcdNameResolver extends NameResolver {
@@ -79,7 +81,7 @@ public class EtcdNameResolver extends NameResolver {
                 ByteSequence byteSequenceValue = kv.getValue();
                 ServiceCenterValue value = (ServiceCenterValue) JSONObject.parseObject(byteSequenceValue.getBytes(), ServiceCenterValue.class);
                 String endPoint = value.getEndPoint();
-                log.info(String.format("service found:%s", endPoint));
+                log.info(String.format("service %s found:%s", this.serverServiceName, endPoint));
                 String[] addressArray = endPoint.split(":");
                 List<SocketAddress> sockaddrsList = new ArrayList<SocketAddress>();
                 sockaddrsList.add(new InetSocketAddress(addressArray[0], Integer.parseInt(addressArray[1])));

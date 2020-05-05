@@ -3,9 +3,9 @@ package com.archer.demo;
 import com.archer.demo.helloworld.GreeterGrpc;
 import com.archer.demo.helloworld.HelloReply;
 import com.archer.demo.helloworld.HelloRequest;
-import com.archer.service_governance.EnvEnum;
-import com.archer.service_governance.ProtocolEnum;
-import com.archer.service_governance.ServiceEntity;
+import com.archer.service_governance.enums.EnvEnum;
+import com.archer.service_governance.enums.ProtocolEnum;
+import com.archer.service_governance.beans.ServiceEntity;
 import com.archer.service_governance.ServiceGovernanceClient;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -28,6 +28,7 @@ public class HelloServer {
                 .protocolEnum(ProtocolEnum.gRPC)
                 .envEnum(EnvEnum.DEV).build();
         ServiceGovernanceClient governanceClient = new ServiceGovernanceClient("", serviceEntity);
+        governanceClient.start();
         helloServererver.blockUntilShutdown();
     }
 

@@ -1,4 +1,4 @@
-package com.archer.servgovernspringgrpc.governance;
+package com.archer.servgovernspringgrpc.governance.beans;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,19 +1,19 @@
-package com.archer.service_governance;
+package com.archer.service_governance.register;
 
 import com.alibaba.fastjson.JSON;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.archer.service_governance.beans.ServiceCenterValue;
+import com.archer.service_governance.beans.ServiceEntity;
+import com.archer.service_governance.register.Register;
+import com.archer.service_governance.register.ServiceGovernanceThreadFactory;
 import io.etcd.jetcd.ByteSequence;
 import io.etcd.jetcd.Client;
 import io.etcd.jetcd.KV;
 import io.etcd.jetcd.Lease;
 import io.etcd.jetcd.lease.LeaseGrantResponse;
 import io.etcd.jetcd.lease.LeaseKeepAliveResponse;
-import io.etcd.jetcd.lease.LeaseRevokeResponse;
 import io.etcd.jetcd.options.PutOption;
 
 import java.util.concurrent.*;
-
-import static sun.rmi.registry.RegistryImpl.getID;
 
 public class ServiceRegister implements Register {
     public static final String serviceRegisterPrefix = "/services";

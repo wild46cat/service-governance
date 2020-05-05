@@ -1,4 +1,4 @@
-package com.archer.servgovernspringgrpc.governance;
+package com.archer.service_governance.resolver;
 
 import io.grpc.Attributes;
 import io.grpc.EquivalentAddressGroup;

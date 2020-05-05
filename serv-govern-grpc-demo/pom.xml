@@ -90,6 +90,12 @@
             <artifactId>reactor-grpc-stub</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!--grpc结合spring-->
+        <dependency>
+            <groupId>com.salesforce.servicelibs</groupId>
+            <artifactId>grpc-spring</artifactId>
+            <version>0.8.1</version>
+        </dependency>
     </dependencies>
     <build>
         <extensions>

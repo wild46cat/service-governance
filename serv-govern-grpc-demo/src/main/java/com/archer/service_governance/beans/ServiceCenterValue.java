@@ -1,4 +1,4 @@
-package com.archer.service_governance;
+package com.archer.service_governance.beans;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

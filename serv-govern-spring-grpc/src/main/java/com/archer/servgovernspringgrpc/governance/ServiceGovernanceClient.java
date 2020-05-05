@@ -1,7 +1,9 @@
 package com.archer.servgovernspringgrpc.governance;
 
+import com.archer.servgovernspringgrpc.governance.beans.ServiceEntity;
+import com.archer.servgovernspringgrpc.governance.etcd.EtcdClient;
+import com.archer.servgovernspringgrpc.governance.register.ServiceRegister;
 import io.etcd.jetcd.Client;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +12,7 @@ import java.util.List;
 /**
  * 服务治理客户端
  */
+//todo http的服务注册
 public class ServiceGovernanceClient {
     /**
      * etcd client
@@ -26,11 +29,7 @@ public class ServiceGovernanceClient {
     private List<ServiceRegister> serviceRegisterList = new ArrayList<>();
 
     public ServiceGovernanceClient(String etcdClientAddrs, ServiceEntity... serviceEntity) {
-        if (StringUtils.isNotBlank(etcdClientAddrs)) {
-            this.etcdEndPoints = etcdClientAddrs;
-        }
-        String[] strings = etcdEndPoints.split(",");
-        client = Client.builder().endpoints(strings).build();
+        client = EtcdClient.getInstance(etcdEndPoints);
 
         this.serviceEntityList = Arrays.asList(serviceEntity);
         for (ServiceEntity entity : this.serviceEntityList) {

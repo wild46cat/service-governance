@@ -1,7 +1,8 @@
-package com.archer.service_governance;
+package com.archer.service_governance.resolver;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.archer.service_governance.beans.ServiceCenterValue;
+import com.archer.service_governance.enums.ProtocolEnum;
 import io.etcd.jetcd.*;
 import io.etcd.jetcd.kv.GetResponse;
 import io.etcd.jetcd.options.GetOption;
@@ -18,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-import static com.archer.service_governance.ServiceRegister.serviceRegisterPrefix;
-import static com.archer.service_governance.ServiceRegister.spliter;
+import static com.archer.service_governance.register.ServiceRegister.serviceRegisterPrefix;
+import static com.archer.service_governance.register.ServiceRegister.spliter;
 
 public class EtcdNameResolver extends NameResolver {
     private static final Charset charset = Charset.forName("UTF-8");

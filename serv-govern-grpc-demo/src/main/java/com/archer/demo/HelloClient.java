@@ -4,11 +4,12 @@ import com.archer.demo.helloworld.GreeterGrpc;
 import com.archer.demo.helloworld.HelloReply;
 import com.archer.demo.helloworld.HelloRequest;
 import com.archer.service_governance.*;
+import com.archer.service_governance.beans.ServiceEntity;
+import com.archer.service_governance.enums.EnvEnum;
+import com.archer.service_governance.enums.ProtocolEnum;
+import com.archer.service_governance.resolver.EtcdNameResolverFactory;
 import io.grpc.*;
 
-import java.net.InetSocketAddress;
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.*;
 
 public class HelloClient {
@@ -22,12 +23,13 @@ public class HelloClient {
                 .envEnum(EnvEnum.DEV).build();
 
         ServiceGovernanceClient governanceClient = new ServiceGovernanceClient("", serviceEntity);
+        governanceClient.start();
 
         //根据etcd动态解析grpc服务名称
-//        EtcdNameResolverFactory etcdNameResolverFactory = new EtcdNameResolverFactory(governanceClient.getClient());
+        EtcdNameResolverFactory etcdNameResolverFactory = new EtcdNameResolverFactory(governanceClient.getClient());
         //固定地址解析grpc服务名称
-        EtcdNameResolverFactory etcdNameResolverFactory = new EtcdNameResolverFactory(governanceClient.getClient(),
-                new InetSocketAddress("localhost", 50051));
+//        EtcdNameResolverFactory etcdNameResolverFactory = new EtcdNameResolverFactory(governanceClient.getClient(),
+//                new InetSocketAddress("localhost", 50051));
 
         ManagedChannel managedChannel = ManagedChannelBuilder
                 .forTarget("helloworld")

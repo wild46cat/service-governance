@@ -1,5 +1,6 @@
 package com.archer.servgovernspringgrpc.boot.grpc.server.serverfactory;
 
+import com.archer.servgovernspringgrpc.boot.grpc.server.config.GrpcServerConfig;
 import com.archer.servgovernspringgrpc.boot.grpc.server.server.GrpcServiceDefinition;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -15,9 +16,11 @@ import java.util.List;
 public abstract class AbstractGrpcServerFactory<T extends ServerBuilder<T>> implements GrpcServerFactory {
     private static final Logger log = LoggerFactory.getLogger(AbstractGrpcServerFactory.class);
     protected List<GrpcServiceDefinition> grpcServiceDefinitionList = new ArrayList<GrpcServiceDefinition>();
+    private final GrpcServerConfig config;
 
-    public AbstractGrpcServerFactory(List<GrpcServiceDefinition> grpcServiceDefinitionList) {
+    public AbstractGrpcServerFactory(List<GrpcServiceDefinition> grpcServiceDefinitionList, GrpcServerConfig config) {
         this.grpcServiceDefinitionList = grpcServiceDefinitionList;
+        this.config = config;
     }
 
     @Override
@@ -48,7 +51,7 @@ public abstract class AbstractGrpcServerFactory<T extends ServerBuilder<T>> impl
 
     @Override
     public int getPort() {
-        return 50051;
+        return this.config.getPort();
     }
 
     @Override

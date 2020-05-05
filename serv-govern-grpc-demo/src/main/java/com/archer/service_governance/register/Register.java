@@ -1,4 +1,4 @@
-package com.archer.service_governance;
+package com.archer.service_governance.register;
 
 public interface Register {
     /**

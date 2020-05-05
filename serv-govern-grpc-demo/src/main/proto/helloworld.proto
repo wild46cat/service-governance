@@ -15,10 +15,10 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "com.archer.servgovernspringgrpc.grpc";
+option java_package = "com.archer.demo.helloworld";
 option java_outer_classname = "HelloWorldProto";
 
-package grpc;
+package helloworld;
 
 // The greeting service definition.
 service Greeter {
